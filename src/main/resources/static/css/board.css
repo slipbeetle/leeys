@@ -1,0 +1,29 @@
+@charset "UTF-8";
+.btn_sgty {display:inline-block;height:22px;background:url(../images/board/bg_graybtn_l.gif) no-repeat;font-size:11px;}
+.btn_sgty span {display:inline-block;height:19px;padding:3px 15px 0 15px;background:url(../images/board/bg_graybtn_r.gif) no-repeat right 0;}
+a.btn_sgty, a.btn_sgty:hover {text-decoration:none;color:#333333;}
+
+.btn_bty {display:inline-block;height:24px;background:url(../images/board/bg_bluebtn_l.gif) no-repeat;}
+.btn_bty span {display:inline-block;height:19px;padding:3px 20px 0 20px;background:url(../images/board/bg_bluebtn_r.gif) no-repeat right 0;}
+a.btn_bty, a.btn_bty:hover {text-decoration:none;color:#e9e9e9 !important;}
+
+.btn_gty {display:inline-block;height:24px;background:url(../images/board/bg_btn_l.gif) no-repeat;}
+.btn_gty span {display:inline-block;height:21px;padding:3px 20px 0 20px;background:url(../images/board/bg_btn_r.gif) no-repeat right 0;}
+a.btn_gty, a.btn_gty:hover {text-decoration:none;color:#333333 !important;}
+
+/* table type */
+.tbty_a {width:100%;margin:10px 0;border-top:2px solid #333333;color:#666;}
+.tbty_a th {height:21px;padding:5px 10px 5px 15px;border-bottom:1px solid #e8e8e8;background:#f4f5f7;text-align:left;color:#555555;}
+.tbty_a td {height:22px;padding:5px 10px 5px 15px;border-bottom:1px solid #e8e8e8;}
+
+.tbty_b {width:100%;margin:10px 0;border-top:2px solid #333333;text-align:center;color:#666;}
+.tbty_b th {height:19px;padding:5px 5px 5px 5px;background:#ecf2fd;border:1px solid #ddd;color:#555555;}
+.tbty_b td {height:19px;padding:5px 5px 5px 5px;border:1px solid #ddd;}
+.tbty_b tr.bg td {background:#f4f5f7;}
+
+.tbty_c {width:100%;margin:10px 0;border-top:2px solid #333333;text-align:center;color:#666;}
+.tbty_c th {height:21px;padding:5px 5px 5px 5px;border-bottom:1px solid #e8e8e8;background:#ecf2fd url(../images/board/line_th.gif) no-repeat 0 50%;color:#555555;}
+.tbty_c th:first-child {background-image:none;}
+.tbty_c td {height:22px;padding:5px 5px 5px 5px;border-bottom:1px solid #e8e8e8;}
+
+.txtl {padding:5px 5px 5px 15px;text-align:left;}

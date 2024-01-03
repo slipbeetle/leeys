@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />	
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery.form_3.18.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript">
+	
+</script>
+
+<script language="javascript">
+	
+    $(document).ready(function() {
+		
+        fn_select();
+        
+    });
+
+    function fn_init() {
+       
+    }
+
+	function fn_save(){
+		
+		var p_custNo = document.frm.custNo.value;
+		
+		$.ajax({
+			
+	 		url: "/auth/customerInfo.do",
+	 		data:{custcode : p_custNo},
+	 		type:"post",
+	 		dataType:"json",
+	 		async : false,
+	 		success:function(result) {
+	 			var html = "";
+	 			var data = result.TB_USER1_LIST;
+				
+	 			if(data == null || data == ""){
+	 				alert("사업자 정보가 없거나 사용하실 수 없는 사업자입니다.\n관리자에게 문의하세요.");
+	 			}else{
+	 				document.frm.action = "<c:url value='/auth/memberSave.do'/>";
+	 			   	document.frm.submit();
+	 			}
+	 			
+	 		},
+	 		error:function(e) {}
+	 	})
+	 	
+	}
+	
+	function fn_select(){
+		
+		$.ajax({
+			
+	 		url: "/actor/actorList.data",
+	 		type:"post",
+            dataType:"json",
+            async : false,
+            success:function(result) {
+	 			$(result.TB_USER1_LIST).each(function(index, data){
+		 			console.log(" : "+data.actor_id+" : "+data.first_name+" : "+data.last_name);
+	 			});
+	 		},
+	 		error:function(e) {}
+	 	})
+	}
+	
+</script>
+
+</head>
+<body>
+<form name="frm" id="frm" method=post>
+<!-- wrap -->
+<div class="wrap">
+	<!-- #contents -->
+	<div id="contents">
+		<!-- #content -->
+		<div id="content">
+			<!--  -->
+			<div class="tit_sec">
+				<h3 class="tit">회원가입</h3>
+				<dl class="navi_sec">
+					<dt>&nbsp;</dt>
+					<dd>회원가입</dd>
+				</dl>
+			</div>
+			<!--//  -->
+			<!--  -->
+			<h4 class="ti">가입자 정보</h4>
+			<table summary="" class="tbty_a">
+			<caption></caption>
+			<colgroup>
+				<col width="18%" />
+				<col />
+				<col />
+				<col />
+			</colgroup>
+				<tr>
+					<th>사업자번호</th>
+					<td colspan="3"><input type="text" name="custNo" class="in"  style="width:100px;" maxlength="12" onkeypress="fn_checkEnt();" onkeydown="javascript:if (event.keyCode == 13) { fn_checkEnt(); }"/></td>
+				</tr>
+				<tr>
+					<th>ID</th>
+					<td colspan="3"><input type="text" name="userId" class="in"  style="width:100px;" maxlength="20"/></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td colspan="3"><label for="inpt03" class="invisible">비밀번호</label>
+						<input type="password" name="pass" maxlength="10" class="in"  style="width:100px;" />&nbsp;&nbsp;
+						<input type="password" name="passConf" maxlength="10" class="in"  style="width:100px;" />&nbsp;&nbsp;
+						<div class="flr"><a href="javascript:fn_passUpdate();" class="btn_sgty"><span>비밀번호 수정</span></a></div>
+					</td>
+				</tr>
+				<tr>
+					<th>사업자명</th>
+					<td><input type="text" name="custNm" class="in"  style="width:200px;" maxlength="100"/></td>
+					<th>FAX</th>
+					<td><label for="inpt04" class="invisible">fax</label>
+						<input type="text" name="custFax1" maxlength="3" class="in"  style="width:40px;" value=""/>-
+						<input type="text" name="custFax2" maxlength="4" class="in"  style="width:40px;" value=""/>-
+						<input type="text" name="custFax3" maxlength="4" class="in"  style="width:40px;" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td><input type="text" name="custAddr" maxlength="3" class="in"  style="width:140px;" value=""/></td>
+					<th>휴대폰</th>
+					<td><label for="inpt04" class="invisible">휴대폰</label>
+						<input type="text" name="userMobile1" maxlength="3" class="in"  style="width:40px;" value=""/>-
+						<input type="text" name="userMobile2" maxlength="4" class="in"  style="width:40px;" value=""/>-
+						<input type="text" name="userMobile3" maxlength="4" class="in"  style="width:40px;" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td><label for="inpt04" class="invisible">전화번호</label>
+						<input type="text" name="userTel1" maxlength="3" class="in"  style="width:40px;" value=""/>-
+						<input type="text" name="userTel2" maxlength="4" class="in"  style="width:40px;" value=""/>-
+						<input type="text" name="userTel3" maxlength="4" class="in"  style="width:40px;" value=""/>
+					</td>
+					<th>이메일</th>
+					<td><label for="inpt04" class="invisible">이메일</label>
+						<input type="text" name="userEmail" maxlength="30" class="in"  style="width:180px;" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<th>담당자명</th>
+					<td colspan="3"><input type="text" name="userNm" class="in"  style="width:80px;" value=""/></td>
+				</tr>
+				<tr>
+					<th>비고</th>
+					<td colspan="3"><input type="text" name="des" class="in"  style="width:240px;" value=""/></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">
+						문자 수신 <input type="checkbox" name="sms_chk1" />&nbsp;
+						FAX 수신 <input type="checkbox" name="fax_chk1" />&nbsp;
+						이메일 수신 <input type="checkbox" name="email_chk1"  />
+						<input type="hidden" name="sms_chk">
+						<input type="hidden" name="fax_chk">
+						<input type="hidden" name="email_chk">
+					</td>
+				</tr>
+			</table>
+			<div class="blk">
+				<div class="flr">
+					<a href="javascript:fn_save();" class="btn_gty"><span>가입하기</span></a>
+				</div>
+			</div>
+			
+		</table>
+		</div>
+		<!-- #content -->
+	</div>
+	<!--// #contents  -->
+	<!-- #footer -->
+	<!--// #footer -->	
+</div>
+<!--// wrap -->
+</form>
+</body>
+</html>
